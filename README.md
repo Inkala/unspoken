@@ -55,57 +55,60 @@ An app to share thoughts and feelings and support others. People can create thei
 
 ## Containers
 
-- App: Contains the router, the nav and the main body
-- Body: Placeholder to load all other pages
+**App:**
+- Contains the router, the nav and the main body
+
+**Body:**
+- Placeholder to load all other pages
 
 ## Components
 
-- Message Card
-  - Input: Message, user owner
+**Message Card**
+- Input: Message, user owner
   - Output: Markup for message. Action buttons
-- New message
-  - Output: Text area. Action buttons
-- Header
-  - Input: Authenticated user
-  - Output: Home. Profile and notification buttons || Login, Signup
-- Nav
-  - Input: Authenticated user
-  - Output: Nav Content
-- Button
-  - Input: Text, action
-  - Output: Sends to route
-- Loading
+**New message**
+- Output: Text area. Action buttons
+**Header**
+- Input: Authenticated user
+- Output: Home. Profile and notification buttons || Login, Signup
+**Nav**
+- Input: Authenticated user
+- Output: Nav Content
+**Button**
+- Input: Text, action
+- Output: Sends to route
+**Loading**
 
 ## Services
 
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser()
+**Auth Service**
+- auth.login(user)
+- auth.signup(user)
+- auth.logout()
+- auth.me()
+- auth.getUser()
 
-- Message Service
-  - getAllMessages()
-  - createMessage(data)
-  - getOneMessage(id)
-  - editMessage(id, data)   
-  - deleteMessage(id)
+**Message Service**
+- getAllMessages()
+- createMessage(data)
+- getOneMessage(id)
+- editMessage(id, data)   
+- deleteMessage(id)
 
-- Like Service
-  - getMyLikes()
-  - likeMessage(messageId)
-  - unlikeMessage(messageId)
+**Like Service**
+- getMyLikes()
+- likeMessage(messageId)
+- unlikeMessage(messageId)
 
-- Reaction Service (I understand)
-  - getMyReactions()
-  - addReaction(reactionId)
-  - removeReaction(reactionId)
+**Reaction Service** (I understand)
+- getMyReactions()
+- addReaction(reactionId)
+- removeReaction(reactionId)
 
-- Comments Service
-  - getAllComments()
-  - addNewComment(messageId, data)
-  - removeComent(messageId)
+**Comments Service**
+- getAllComments()
+- addNewComment(messageId, data)
+- removeComent(messageId)
 
 ## Links
 
