@@ -3,23 +3,29 @@ import { Link } from 'react-router-dom';
 import withAuth from '../hoc/withAuth.js';
 
 class Navbar extends Component {
-  render() {  
+  render() {
     return (
       <header className="navbar">
+        <Link to="/" className="nav-logo">
+          <img
+            src={process.env.PUBLIC_URL + '/img/logo-icon.svg'}
+            alt="Unspoken logo"
+          />
+        </Link>
         {this.props.isLoggedIn ? (
-          <>
-            <p>username: {this.props.user.username}</p>
-            <p onClick={this.props.logout}>Logout</p>
-          </>
+          <ul>
+            <li />
+          </ul>
         ) : (
-          <>
-            <Link to='/login'>Login</Link>
-            <Link to='/signup'>Signup</Link>
-          </>
+          <Link class="btn signup-btn" to="/signup">
+            Signup
+          </Link>
         )}
       </header>
-    )
+    );
   }
 }
 
 export default withAuth(Navbar);
+
+/* <p onClick={this.props.logout}>Logout</p> */

@@ -21,7 +21,7 @@ class App extends Component {
       <Router>
         <AuthProvider>
           <Navbar />
-          <main className="container">
+          <main className="main-container">
             <Switch>
               <Route path="/" exact component={Home} />
               <AnonRoute path="/signup" component={Signup} />

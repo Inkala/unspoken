@@ -1,24 +1,25 @@
 // Variables
 $dark-grey: #2a2a2b;
 $gunmetal: #606666;
-$greyish-blue: #5b859c;
-$very-light-pink: #d0d0d0;
-$very-light-pink: #eaeaea;
-$white: #ffffff;
+$light-gray: #d0d0d0;
+$very-light-gray: #eaeaea;
 $dark-blue-grey: #0d1c2e;
+$greyish-blue: #5b859c;
 $light-grey-blue: #99b1bd;
+$error: #ba0000;
 $light-peach: #ead7c0;
+$white: #ffffff;
 
 /* ---- reset ---- */
 
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
-
-// font-family: 'EB Garamond', serif;
 
 body #root {
   margin: 0;
@@ -27,15 +28,104 @@ body #root {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
+  background-color: $very-light-gray;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
+/*-- General --*/
+
+.btn, .main-container .btn {
+  color: $white;
+  background-color: $greyish-blue;
+  border: none;
+  border-radius: 0;
+  text-transform: capitalize;
+  &:focus,
+  &:hover {
+    color: $dark-blue-grey;
+  }
+}
+
+.main-container {
+  height: calc(100vh - 50px);
+  margin-top: 50px;
+}
+
 .navbar {
-  background-color: $dark-grey;
-  color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  background-color: $dark-grey;
+  color: $white;
+  height: 50px;
+  align-items: center;
+  padding: 0 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  & .nav-logo {
+    height: 55%;
+    & img {
+      height: 100%;
+    }
+  }
+  & .signup-btn {
+    padding: 0.1em 0.8em 0.2em;
+    font-weight: 300;
+  }
+}
+
+.signup-form {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  & form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10%;
+    & .label {
+      color: $dark-blue-grey;
+      margin: 3% 0;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2em;
+    }
+    & .input {
+      background-color: $white;
+      &:focus {
+        border-color: $greyish-blue;
+      }
+    }
+    & .btn {
+      margin: 5% auto;
+      font-size: 1em;
+    }
+  }
+  & .error-message {
+    color: $error;
+    font-size: 0.8em;
+    margin: -10px 0 5px;
+    &:before {
+      content: "*";
+      padding: 0 5px;
+    }
+  }
+  & .bottom-text {
+    margin-top: 20%;
+    color: $gunmetal;
+    text-align: center;
+    font-size: 0.9em;
+    & a {
+      color: $greyish-blue;
+    }
+  }
 }

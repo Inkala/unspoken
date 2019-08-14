@@ -6,26 +6,35 @@ import * as Yup from 'yup';
 
 const Login = ({ touched, errors }) => {
   return (
-    <>
+    <section className="signup-form">
       <Form>
-        <label htmlFor="username">Username:</label>
-        <Field id="username" type="text" name="username" />
+        <label className="label" htmlFor="username">
+          Username:
+        </label>
+        <Field className="input" id="username" type="text" name="username" />
         {touched.username && errors.username && (
           <p className="error-message">{errors.username}</p>
         )}
-        <label htmlFor="password">Password:</label>
-        <Field id="password" type="password" name="password" />
+        <label className="label" htmlFor="password">
+          Password:
+        </label>
+        <Field
+          className="input"
+          id="password"
+          type="password"
+          name="password"
+        />
         {touched.password && errors.password && (
           <p className="error-message">{errors.password}</p>
         )}
-        <input type="submit" value="Login" />
+        <input className="btn" type="submit" value="Login" />
       </Form>
 
-      <p>
+      <p className="bottom-text">
         You don't have an accout yet?
         <Link to={'/signup'}> Signup</Link>
       </p>
-    </>
+    </section>
   );
 };
 
