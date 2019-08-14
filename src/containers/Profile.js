@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import withAuth from '../components/withAuth.js';
+import withAuth from '../hoc/withAuth.js';
 
-class Private extends Component {
+class Profile extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class Private extends Component {
   }
 }
 
-export default withAuth(Private);
+export default withAuth(Profile);

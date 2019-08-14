@@ -1,0 +1,41 @@
+// Variables
+$dark-grey: #2a2a2b;
+$gunmetal: #606666;
+$greyish-blue: #5b859c;
+$very-light-pink: #d0d0d0;
+$very-light-pink: #eaeaea;
+$white: #ffffff;
+$dark-blue-grey: #0d1c2e;
+$light-grey-blue: #99b1bd;
+$light-peach: #ead7c0;
+
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// font-family: 'EB Garamond', serif;
+
+body #root {
+  margin: 0;
+  padding: 0;
+  color: $dark-grey;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+.navbar {
+  background-color: $dark-grey;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,9 +1,8 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import withAuth from './withAuth';
+import withAuth from '../hoc/withAuth';
 
 const AnonRoute = (props) => {
-  console.log(props)
   const {isLoggedIn, component: Component, ...rest} = props;
   return (
     <>
@@ -12,7 +11,7 @@ const AnonRoute = (props) => {
           return <Component {...props}/>
         }}
         {...rest}
-      /> : <Redirect to='/private' />}
+      /> : <Redirect to='/' />}
     </>
 
    
