@@ -5,7 +5,7 @@ import withAuth from '../hoc/withAuth.js';
 import messagesService from '../services/messages-service';
 import MessageCard from '../components/MessageCard';
 import text from '../translations/texts_ES.json';
-import { ReactComponent as WriteMessageIcon } from '../svgs/write-message.svg';
+import { ReactComponent as WriteMessageIcon } from '../svg/write-message.svg';
 
 class Home extends Component {
   state = {
@@ -20,7 +20,7 @@ class Home extends Component {
 
   handleDeleteMessage(id) {
     messagesService.deleteMessage(id).then(() => {
-      const messagesCopy = [...this.state.messages];
+      // const messagesCopy = [...this.state.messages];
     });
   }
 

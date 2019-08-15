@@ -1,26 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import withAuth from '../hoc/withAuth.js';
+import { ReactComponent as Logo } from '../svg/logo-icon.svg';
+import { ReactComponent as Notifications } from '../svg/notifications.svg';
+import { ReactComponent as Profile } from '../svg/profile.svg';
+import { ReactComponent as FAQs } from '../svg/faqs.svg';
 
 const Navbar = props => {
   return (
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        <img
-          src={process.env.PUBLIC_URL + '/img/logo-icon.svg'}
-          alt="Unspoken logo"
-        />
+        <Logo />
       </Link>
       {props.isLoggedIn ? (
         <ul>
           <li>
-            <img src={process.env.PUBLIC_URL + '/img/icons/notifications.svg'} alt="" />
+            <Notifications className="nav-icons" />
           </li>
           <li>
-            <img src={process.env.PUBLIC_URL + '/img/icons/profile.svg'} alt="" />
+            <Profile className="nav-icons" />
           </li>
           <li>
-            <img src={process.env.PUBLIC_URL + '/img/icons/faqs.svg'} alt="" />
+            <FAQs className="nav-icons" />
           </li>
           <li>
             <p className="btn signup-btn" onClick={props.logout}>

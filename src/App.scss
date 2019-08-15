@@ -48,7 +48,8 @@ button {
   text-transform: inherit !important;
 }
 
-.btn, .main-container .btn {
+.btn,
+.main-container .btn {
   border: none;
   color: $white;
   background-color: $greyish-blue;
@@ -78,7 +79,7 @@ button {
   z-index: 10;
   & .nav-logo {
     height: 55%;
-    & img {
+    & svg {
       height: 100%;
     }
   }
@@ -95,9 +96,13 @@ button {
       margin: 0;
       margin-left: 5px;
       list-style: none;
-      height: 55%;
-      & img {
+      height: 50%;
+      & svg {
         height: 100%;
+        width: auto;
+        & path {
+          fill: $white;
+        }
       }
     }
   }
@@ -114,6 +119,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  font-size: 1.1em;
   & form {
     display: flex;
     flex-direction: column;
@@ -127,6 +133,10 @@ button {
     }
     & .input {
       background-color: $white;
+      border-radius: 0;
+      height: auto;
+      font-size: 1.1em;
+      padding: 8px 10px;
       &:focus {
         border-color: $greyish-blue;
       }
@@ -157,7 +167,12 @@ button {
 }
 .home-section {
   position: relative;
-  background-image: url();
+  height: 100%;
+  min-height: calc(100vh - 110px);
+  background-image: url(/img/forest.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
   & .counds-header {
     border-bottom: 1px solid $light-gray;
     position: relative;
