@@ -19,11 +19,15 @@ class Home extends Component {
     });
   }
 
-  handleDeleteMessage(id) {
-    messagesService.deleteMessage(id).then(() => {
-      // const messagesCopy = [...this.state.messages];
+  deleteMessageHandler = id => {
+    messagesService.deleteMessage(id)
+    .then(() => {
+      const filteredMessages = this.state.messages.filter(message => {
+        return message._id !== id;
+      });
+      this.setState({ messages: filteredMessages });
     });
-  }
+  };
 
   render() {
     const { messages } = this.state;

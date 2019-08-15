@@ -32,15 +32,15 @@ const MessageCard = props => {
         </button>
         {reactions.length}
         <button className="reaction-btn">
-          <img src={process.env.PUBLIC_URL + '/img/icons/like.svg'} alt="" />
+          <Like className="like"/>
         </button>
         {likes.length}
         <button className="reaction-btn">
-          <img src={process.env.PUBLIC_URL + '/img/icons/comments.svg'} alt="" />
+          <Comments />
         </button>
         {comments.length}
-        <button className="reaction-btn" onClick={() => { props.deleteHandler(_id)}} >
-          <img src={process.env.PUBLIC_URL + '/img/icons/more.svg'} alt="" />
+        <button className="reaction-btn" onClick={() => { props.handleDeleteMessage(_id)}} >
+          <More />
         </button>
       </section>
     </article>

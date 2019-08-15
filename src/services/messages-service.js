@@ -14,7 +14,7 @@ class MessagesService {
   }
 
   createMessage(newMessage) {
-    return this.message.post('/messages/new')
+    return this.messages.post('/messages/new')
   }
 
   getOneMessage(id) {
@@ -27,7 +27,7 @@ class MessagesService {
   }
 
   deleteMessage(id) {
-    return this.message.delete(`/messages/${id}/delete`)
+    return this.messages.delete(`/messages/${id}/delete`)
     .then(res => res)
   }
 
