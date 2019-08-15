@@ -4,6 +4,7 @@ import { ReactComponent as ArrowDown } from '../svg/arrow-down.svg';
 import { ReactComponent as Like } from '../svg/like.svg';
 import { ReactComponent as Comments } from '../svg/comments.svg';
 import { ReactComponent as More } from '../svg/more.svg';
+import text from '../translations/texts_ES.json';
 
 const MessageCard = props => {
   const {
@@ -15,6 +16,7 @@ const MessageCard = props => {
     reactions,
     _id
   } = props.message;
+  const {i_understand, } = text.home;
   return (
     <article className="message-card">
       <p className="message-content">{content}</p>
@@ -28,7 +30,7 @@ const MessageCard = props => {
       </section>
       <section className="message-reactions">
         <button className="reaction-btn text-button">
-          "Te entiendo"
+          "{i_understand}"
         </button>
         {reactions.length}
         <button className="reaction-btn">

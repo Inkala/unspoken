@@ -20,8 +20,7 @@ class Home extends Component {
   }
 
   deleteMessageHandler = id => {
-    messagesService.deleteMessage(id)
-    .then(() => {
+    messagesService.deleteMessage(id).then(() => {
       const filteredMessages = this.state.messages.filter(message => {
         return message._id !== id;
       });
@@ -31,11 +30,11 @@ class Home extends Component {
 
   render() {
     const { messages } = this.state;
-    const { home } = text;
+    const { tagline, more, new_message } = text.home;
     return (
       <section className="home-section">
         <Header />
-        <h2>{home.tagline}</h2>
+        <h2>{tagline}</h2>
         <section className="messages">
           {messages.length
             ? messages.map(message => (
@@ -49,12 +48,12 @@ class Home extends Component {
             : null}
         </section>
         <button className="view-more">
-          VER MÁS
+          {more}
           <ArrowDown />
         </button>
         <button className="btn new-message-btn">
           <WriteMessageIcon />
-          {home.new_message}
+          {new_message}
         </button>
       </section>
     );
