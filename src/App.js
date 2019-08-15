@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Navbar from './components/Navbar.js';
+import AuthProvider from './contexts/auth-context.js';
 import PrivateRoute from './components/PrivateRoute.js';
 import AnonRoute from './components/AnonRoute.js';
+
+import Navbar from './components/Navbar.js';
 import Home from './containers/Home';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
 import Profile from './containers/Profile';
-
-import AuthProvider from './contexts/auth-context.js';
+import Footer from './components/Footer';
 
 import './App.scss';
 import 'milligram';
@@ -28,6 +29,7 @@ class App extends Component {
               <PrivateRoute path="/profile" component={Profile} />
             </Switch>
           </main>
+          <Footer />
         </AuthProvider>
       </Router>
     )

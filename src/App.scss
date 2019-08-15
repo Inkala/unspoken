@@ -173,7 +173,11 @@ button {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
-  & .counds-header {
+  padding-bottom: 200px;
+  & svg {
+    width: 80%;
+  }
+  & .clouds-header {
     border-bottom: 1px solid $light-gray;
     position: relative;
     height: 135px;
@@ -213,69 +217,129 @@ button {
     padding-top: 2px;
     & svg {
       height: 30px;
+      width: auto;
       margin-right: 8px;
+    }
+  }
+  & .view-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $dark-grey;
+    border: 2px solid $dark-grey;
+    background: none;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 7px 0 4px;
+    & svg {
+      height: 100%;
+      width: auto;
     }
   }
 }
 
-.message-card {
-  & .message-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $white;
-    width: 100%;
-    min-height: 250px;
-    padding: 45px;
-    font-family: 'EB Garamond', serif;
-    font-size: 1.2em;
-    font-weight: 700;
-    margin: 0;
-  }
-  & .message-info {
-    & .categories {
-      display: flex;
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-      color: $dark-grey;
-    }
-  }
-  & .message-bottom {
-    margin-bottom: 50px;
-    position: relative;
-    width: 100%;
-    &:after {
-      content: '';
-      position: absolute;
-      left: 25px;
-      top: -1px;
-      border-top: solid 20px $white;
-      border-right: solid 25px transparent;
-    }
-  }
-  .message-reactions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 10px;
-    & .reaction-btn {
-      background: none;
-      border: none;
-      margin: 0;
-      padding: 0;
+.messages {
+  margin-bottom: 50px;
+  & .message-card {
+    & .message-content {
       display: flex;
       align-items: center;
-      & img {
-        width: 32px;
+      justify-content: center;
+      background-color: $white;
+      width: 100%;
+      min-height: 250px;
+      padding: 45px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2em;
+      font-weight: 700;
+      margin: 0;
+    }
+    & .message-info {
+      & .categories {
+        display: flex;
+        align-items: center;
+        border: none;
+        background: none;
+        margin: 0;
+        padding: 0;
+        color: $dark-grey;
+        & svg {
+          height: 10px;
+          & path {
+            fill: $dark-grey;
+          }
+        }
       }
     }
-    & .text-button {
-      color: $dark-grey;
-      border: 2px solid $dark-grey;
-      border-radius: 0;
-      padding: 0 0.8em;
+    & .message-bottom {
+      margin-bottom: 50px;
+      position: relative;
+      width: 100%;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 25px;
+        top: -1px;
+        border-top: solid 20px $white;
+        border-right: solid 25px transparent;
+      }
     }
+    .message-reactions {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 10px;
+      & .reaction-btn {
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        & svg {
+          width: 28px;
+          height: auto;
+          & path {
+            fill: $dark-grey;
+          }
+        }
+        & .like {
+          width: 32px;
+          & path {
+            fill: $very-light-gray;
+            stroke: $dark-grey;
+          }
+        }
+      }
+      & .text-button {
+        color: $dark-grey;
+        border: 2px solid $dark-grey;
+        border-radius: 0;
+        padding: 0 0.8em;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0a0a0a;
+  margin-top: -1px;
+  padding-bottom: 45px;
+  & .social {
+    display: flex;
+    & svg {
+      fill: $white;
+      margin: 10px;
+      height: 18px;
+    }
+  }
+  & p {
+    color: $light-gray;
+    text-align: center;
+    font-size: 0.85em;
   }
 }

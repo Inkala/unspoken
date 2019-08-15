@@ -1,5 +1,10 @@
 import React from 'react';
 
+import { ReactComponent as ArrowDown } from '../svg/arrow-down.svg';
+import { ReactComponent as Like } from '../svg/like.svg';
+import { ReactComponent as Comments } from '../svg/comments.svg';
+import { ReactComponent as More } from '../svg/more.svg';
+
 const MessageCard = props => {
   const {
     category,
@@ -18,7 +23,7 @@ const MessageCard = props => {
         <p><strong>{_id}</strong></p>
         <p>{created_at}</p>
         <button className="categories">
-          {category ? <p>{category}</p> : <p>"Categoría"</p>}v
+          {category ? {category} : "Categoría"}<ArrowDown />
         </button>
       </section>
       <section className="message-reactions">
