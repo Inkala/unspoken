@@ -40,20 +40,27 @@ p {
 
 /*-- General --*/
 
+button {
+  border-radius: 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1em !important;
+  text-transform: inherit !important;
+}
+
 .btn, .main-container .btn {
+  border: none;
   color: $white;
   background-color: $greyish-blue;
-  border: none;
-  border-radius: 0;
-  text-transform: capitalize;
   &:focus,
   &:hover {
-    color: $dark-blue-grey;
+    color: $white;
   }
 }
 
 .main-container {
-  height: calc(100vh - 50px);
+  height: 100%;
+  min-height: calc(100vh - 50px);
   margin-top: 50px;
 }
 
@@ -68,6 +75,7 @@ p {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
   & .nav-logo {
     height: 55%;
     & img {
@@ -77,6 +85,24 @@ p {
   & .signup-btn {
     padding: 0.1em 0.8em 0.2em;
     font-weight: 300;
+  }
+  & ul {
+    display: flex;
+    margin: 0;
+    height: 100%;
+    align-items: center;
+    & li {
+      margin: 0;
+      margin-left: 5px;
+      list-style: none;
+      height: 55%;
+      & img {
+        height: 100%;
+      }
+    }
+  }
+  & p {
+    margin: 0;
   }
 }
 
@@ -115,7 +141,7 @@ p {
     font-size: 0.8em;
     margin: -10px 0 5px;
     &:before {
-      content: "*";
+      content: '*';
       padding: 0 5px;
     }
   }
@@ -126,6 +152,115 @@ p {
     font-size: 0.9em;
     & a {
       color: $greyish-blue;
+    }
+  }
+}
+.home-section {
+  position: relative;
+  background-image: url();
+  & .counds-header {
+    border-bottom: 1px solid $light-gray;
+    position: relative;
+    height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .clouds {
+      position: absolute;
+      height: 65%;
+      opacity: 0.85;
+    }
+    & .left-cloud {
+      left: 0;
+      bottom: 0;
+    }
+    & .right-cloud {
+      right: 0;
+      top: 0;
+    }
+  }
+  & h2 {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 1.25em;
+    letter-spacing: 1.5px;
+  }
+  & .new-message-btn {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    height: 60px;
+    font-size: 1.1em;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2px;
+    & svg {
+      height: 30px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.message-card {
+  & .message-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    width: 100%;
+    min-height: 250px;
+    padding: 45px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0;
+  }
+  & .message-info {
+    & .categories {
+      display: flex;
+      border: none;
+      background: none;
+      margin: 0;
+      padding: 0;
+      color: $dark-grey;
+    }
+  }
+  & .message-bottom {
+    margin-bottom: 50px;
+    position: relative;
+    width: 100%;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 25px;
+      top: -1px;
+      border-top: solid 20px $white;
+      border-right: solid 25px transparent;
+    }
+  }
+  .message-reactions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    & .reaction-btn {
+      background: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      & img {
+        width: 32px;
+      }
+    }
+    & .text-button {
+      color: $dark-grey;
+      border: 2px solid $dark-grey;
+      border-radius: 0;
+      padding: 0 0.8em;
     }
   }
 }

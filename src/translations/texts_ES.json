@@ -1,0 +1,66 @@
+{
+  "home": {
+    "tagline": "Todo lo que no decimos",
+    "sort": "Ordenar",
+    "filter": "Filtrar",
+    "category": "Categoría",
+    "i_understand": "Te entiendo",
+    "more": "Ver más",
+    "new_message": "Escribe tu mensaje"
+  },
+  "new_message": {
+    "instructions": [
+      "Piensa en una persona a la que tienes pendiente decirle algo, pero por el motivo que sea no lo haces.",
+      "Ahora piensa en lo que te gustaría, o hubiese gusado, decirle.",
+      "Tomate tu tiempo."
+    ],
+    "dont_show": "No volver a mostrar",
+    "ready": "Lo tengo",
+    "placeholder": [
+      "Aquí tienes un espacio para descargar esas palagras que no has dicho. Sin contexto, sin explicación, simplemente dirígete a esa persona.",
+      "Hay un máximo de 250 carácteres, así que piensa bien cómo resumir tu mensaje.",
+      "Haz click para empezar."
+    ],
+    "save": "Guardar",
+    "post": "Publicar",
+    "send": "Enviar",
+    "anonymouse": "Publicar como Anónimo",
+    "anonymouse_subtext": "No se vinculará públicamente este mensaje a tu cuenta",
+    "preview": "Previsualización"
+  },
+  "message_actions": {
+    "share": "Compartir mensaje",
+    "edit": "Compartir mensaje",
+    "delete": "Eliminar mensaje",
+    "download": "Eliminar mensaje",
+    "deactivate_notifications": "Desactivar las notificaciones de esta publicación",
+    "activate_notifications": "Activar las notificaciones de esta publicación"
+  },
+  "categories": {
+    "love": "Amor",
+    "hate": "Odio",
+    "nostalgia": "Nostalgia",
+    "family": "Familia",
+    "friendship": "Amistad",
+    "other": "Otros"
+  },
+  "profile_menu": {
+    "greating": "Hola",
+    "saved": "Mis Guardados",
+    "publications": "Mis publicaciones",
+    "sent": "Mis Enviados",
+    "favorites": "Mis Favoritos",
+    "profile": "Perfil",
+    "messages": "Mensajes",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "logout": "Salir"
+  },
+  "notifications": {
+    "not_seen": "No Vistas",
+    "seen": "No Vistas",
+    "reaction": "personas han reaccionado a tu publicación y se sienten igual que tu",
+    "like": "personas les gusta tu publicación",
+    "coment": "personas han comentado tu publicación"
+  }
+}

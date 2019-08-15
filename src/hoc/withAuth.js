@@ -4,6 +4,7 @@ import {AuthContext} from '../contexts/auth-context.js';
 const withAuth = (Comp) => {
   return class WithAuth extends Component {
     render() {
+      
       return(
         <AuthContext.Consumer>
           {({user, isLoggedIn, login, signup, logout}) => (

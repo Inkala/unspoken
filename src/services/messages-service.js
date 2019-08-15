@@ -15,7 +15,6 @@ class MessagesService {
 
   createMessage(newMessage) {
     return this.message.post('/messages/new')
-
   }
 
   getOneMessage(id) {
