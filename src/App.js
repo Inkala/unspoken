@@ -10,7 +10,8 @@ import Home from './containers/Home';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
 import Profile from './containers/Profile';
-import Footer from './components/Footer';
+import NewMessage from './containers/NewMessage';
+import EditMessage from './containers/EditMessage';
 
 import './App.scss';
 import 'milligram';
@@ -27,9 +28,10 @@ class App extends Component {
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/new-message" component={NewMessage} />
+              <PrivateRoute path="/:id/edit" component={EditMessage} />
             </Switch>
           </main>
-          <Footer />
         </AuthProvider>
       </Router>
     )

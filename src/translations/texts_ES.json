@@ -39,8 +39,8 @@
   },
   "message_actions": {
     "share": "Compartir mensaje",
-    "edit": "Compartir mensaje",
-    "delete": "Eliminar mensaje",
+    "edit": "Editar mensaje",
+    "remove": "Eliminar mensaje",
     "download": "Eliminar mensaje",
     "deactivate_notifications": "Desactivar las notificaciones de esta publicación",
     "activate_notifications": "Activar las notificaciones de esta publicación"
