@@ -28,6 +28,7 @@ desktop.ini
 
 # dotenv
 .env
+.env.development
 
 # VS Code settings
 .vscode/

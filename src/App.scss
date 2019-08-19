@@ -43,9 +43,11 @@ p {
 button {
   border-radius: 0 !important;
   font-family: 'Montserrat', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 1em !important;
+  font-weight: 500;
   text-transform: inherit !important;
+  font-size: 1em !important;
+  line-height: 1 !important;
+  height: auto !important;
 }
 
 .btn,
@@ -77,36 +79,37 @@ button {
   top: 0;
   width: 100%;
   z-index: 10;
-  & .nav-logo {
+  .nav-logo {
     height: 55%;
-    & svg {
+    svg {
       height: 100%;
     }
   }
-  & .signup-btn {
+  .signup-btn {
     padding: 0.1em 0.8em 0.2em;
     font-weight: 300;
+    font-size: 1.1em;
   }
-  & ul {
+  ul {
     display: flex;
     margin: 0;
     height: 100%;
     align-items: center;
-    & li {
+    li {
       margin: 0;
       margin-left: 5px;
       list-style: none;
       height: 50%;
-      & svg {
+      svg {
         height: 100%;
         width: auto;
-        & path {
+        path {
           fill: $white;
         }
       }
     }
   }
-  & p {
+  p {
     margin: 0;
   }
 }
@@ -120,18 +123,18 @@ button {
   align-items: center;
   justify-content: space-evenly;
   font-size: 1.1em;
-  & form {
+  form {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-top: 10%;
-    & .label {
+    .label {
       color: $dark-blue-grey;
       margin: 3% 0;
       font-family: 'EB Garamond', serif;
       font-size: 1.2em;
     }
-    & .input {
+    .input {
       background-color: $white;
       border-radius: 0;
       height: auto;
@@ -141,12 +144,15 @@ button {
         border-color: $greyish-blue;
       }
     }
-    & .btn {
+    .btn {
       margin: 5% auto;
       font-size: 1em;
+      padding: 0.1em 0.9em 0.2em;
+      font-weight: 300;
+      text-transform: inherit;
     }
   }
-  & .error-message {
+  .error-message {
     color: $error;
     font-size: 0.8em;
     margin: -10px 0 5px;
@@ -155,52 +161,58 @@ button {
       padding: 0 5px;
     }
   }
-  & .bottom-text {
+  .bottom-text {
     margin-top: 20%;
     color: $gunmetal;
     text-align: center;
     font-size: 0.9em;
-    & a {
+    a {
       color: $greyish-blue;
     }
   }
 }
 .home-section {
-  position: relative;
-  height: 100%;
-  min-height: calc(100vh - 110px);
-  background-image: url(/img/forest.png);
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-  & .counds-header {
+  .messages-section {
+    position: relative;
+    height: 100%;
+    min-height: calc(100vh - 375px);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-bottom: 200px;
+    background-image: url(/img/forest.png);
+  }
+  svg {
+    width: 80%;
+  }
+  .clouds-header {
     border-bottom: 1px solid $light-gray;
     position: relative;
     height: 135px;
     display: flex;
     align-items: center;
     justify-content: center;
-    & .clouds {
+    .clouds {
       position: absolute;
       height: 65%;
       opacity: 0.85;
     }
-    & .left-cloud {
+    .left-cloud {
       left: 0;
       bottom: 0;
     }
-    & .right-cloud {
+    .right-cloud {
       right: 0;
       top: 0;
     }
   }
-  & h2 {
+  h2 {
     text-align: center;
     margin: 15px 0;
     font-size: 1.25em;
     letter-spacing: 1.5px;
   }
-  & .new-message-btn {
+  .new-message-btn {
     display: flex;
     width: 100%;
     position: fixed;
@@ -211,71 +223,263 @@ button {
     justify-content: center;
     align-items: center;
     padding-top: 2px;
-    & svg {
+    z-index: 10;
+    svg {
       height: 30px;
+      width: auto;
       margin-right: 8px;
+    }
+  }
+  .view-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $dark-grey;
+    border: 2px solid $dark-grey;
+    background: none;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-transform: uppercase !important;
+    svg {
+      height: 10px;
+      width: auto;
+      margin-left: 5px;
     }
   }
 }
 
-.message-card {
-  & .message-content {
+.messages-wrapper {
+  margin-bottom: 25px;
+  .message-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $white;
-    width: 100%;
-    min-height: 250px;
-    padding: 45px;
-    font-family: 'EB Garamond', serif;
-    font-size: 1.2em;
-    font-weight: 700;
-    margin: 0;
-  }
-  & .message-info {
-    & .categories {
-      display: flex;
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-      color: $dark-grey;
-    }
-  }
-  & .message-bottom {
-    margin-bottom: 50px;
-    position: relative;
-    width: 100%;
-    &:after {
-      content: '';
-      position: absolute;
-      left: 25px;
-      top: -1px;
-      border-top: solid 20px $white;
-      border-right: solid 25px transparent;
-    }
-  }
-  .message-reactions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
     margin-bottom: 10px;
-    & .reaction-btn {
-      background: none;
-      border: none;
-      margin: 0;
-      padding: 0;
+    font-size: 0.85em;
+    .message-content {
       display: flex;
       align-items: center;
-      & img {
-        width: 32px;
+      justify-content: center;
+      background-color: $white;
+      width: 100%;
+      min-height: 250px;
+      padding: 45px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin: 0;
+    }
+    .message-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 20px;
+      font-weight: 300;
+      p {
+        margin-bottom: 0;
+        margin-right: 12px;
+      }
+      .categories {
+        display: flex;
+        align-items: center;
+        border: none;
+        background: none;
+        margin: 0;
+        margin-left: auto;
+        padding: 0;
+        color: $dark-grey;
+        height: auto;
+        line-height: 1;
+        color: $greyish-blue;
+        font-weight: 700;
+        position: relative;
+        svg {
+          height: 8px;
+          width: auto;
+          margin-left: 5px;
+          path {
+            fill: $greyish-blue;
+          }
+        }
       }
     }
-    & .text-button {
-      color: $dark-grey;
-      border: 2px solid $dark-grey;
-      border-radius: 0;
-      padding: 0 0.8em;
+    .message-bottom {
+      margin-bottom: 15px;
+      position: relative;
+      width: 100%;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: -1px;
+        border-top: solid 18px $white;
+        border-right: solid 24px transparent;
+      }
+    }
+
+    .message-reactions {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 10px 0;
+      position: relative;
+      .reaction-btn {
+        display: flex;
+        align-items: center;
+        font-size: 0.8em;
+        font-weight: 300;
+        .reaction-icon {
+          background: none;
+          border: none;
+          margin: 0;
+          padding: 0;
+          svg {
+            width: 25px;
+            height: auto;
+            margin-right: 7px;
+            path {
+              fill: $dark-grey;
+            }
+          }
+          .like {
+            width: 30px;
+            margin-right: 5px;
+            path {
+              fill: $very-light-gray;
+              stroke: $dark-grey;
+            }
+          }
+          .by-me {
+            path {
+              fill: $greyish-blue;
+              stroke: $greyish-blue;
+            }
+          }
+        }
+      }
+      .text-button {
+        color: $dark-grey;
+        border: 2px solid $dark-grey;
+        padding: 8px;
+        margin-bottom: 0;
+        margin-right: 7px;
+        background: none;
+        font-size: 1.15em !important;
+        &.by-me {
+          color: $white;
+          background-color: $greyish-blue;
+          border-color: $greyish-blue;
+        }
+      }
+    }
+  }
+  .card-menu, .category-menu {
+    border: 1px solid $light-gray;
+    display: flex;
+    justify-content: flex-end;
+    background-color: $white;
+    align-self: flex-end;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 8px 15px;
+      margin-bottom: 0;
+      li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 7px;
+        padding-top: 3px;
+        a {
+          color: $dark-grey;
+        }
+        svg {
+          height: 15px;
+          width: auto;
+          margin-right: 10px;
+          path {
+            fill: $dark-grey;
+          }
+        }
+      }
+    }
+  }
+  .category-menu {
+    z-index: 5;
+    top: 20px;
+    right: -15%;
+    width: 97vw;
+    ul {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      li {
+        margin: 10px 25px;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0a0a0a;
+  margin-top: -1px;
+  padding-bottom: 65px;
+  .social {
+    display: flex;
+    svg {
+      fill: $white;
+      margin: 10px;
+      height: 16px;
+      width: auto;
+    }
+  }
+  p {
+    color: $light-gray;
+    text-align: center;
+    font-size: 0.85em;
+    margin: 0;
+  }
+}
+
+.message-editor {
+  height: calc(100vh - 50px);
+  form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    textarea {
+      border: none;
+      height: 70%;
+      font-size: 1.2em;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      padding: 35% 10%;
+      resize: none;
+    }
+    button {
+      background: none;
+      border: 2px solid $greyish-blue;
+      color: $greyish-blue;
+      display: flex;
+      align-items: center;
+      margin: auto 0 75px;
+      padding: 10px 30px;
+      svg {
+        fill: $greyish-blue;
+        height: 15px;
+        margin-right: 5px;
+        transform: rotate(-90deg);
+      }
     }
   }
 }

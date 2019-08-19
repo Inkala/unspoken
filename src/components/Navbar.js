@@ -6,8 +6,10 @@ import { ReactComponent as Logo } from '../svg/logo-icon.svg';
 import { ReactComponent as Notifications } from '../svg/notifications.svg';
 import { ReactComponent as Profile } from '../svg/profile.svg';
 import { ReactComponent as FAQs } from '../svg/faqs.svg';
+import text from '../translations/texts_ES.json';
 
 const Navbar = props => {
+  const { logout, signup } = text.signup;
   return (
     <nav className="navbar">
       <Link to="/" className="nav-logo">
@@ -26,13 +28,13 @@ const Navbar = props => {
           </li>
           <li>
             <p className="btn signup-btn" onClick={props.logout}>
-              Logout
+              {logout}
             </p>
           </li>
         </ul>
       ) : (
         <Link className="btn signup-btn" to="/signup">
-          Signup
+          {signup}
         </Link>
       )}
     </nav>

@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from '../hoc/withAuth.js';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
+import withAuth from '../hoc/withAuth.js';
+import text from '../translations/texts_ES.json';
+
 const Signup = ({ touched, errors }) => {
+  const {
+    username,
+    password,
+    already,
+    signup,
+    login
+  } = text.signup
   return (
     <section className="signup-form">
       <Form>
-        <label className="label" htmlFor="username">Username:</label>
+        <label className="label" htmlFor="username">{username}:</label>
         <Field className="input" id="username" type="text" name="username" />
         {touched.username && errors.username && (
           <p className="error-message">{errors.username}</p>
         )}
-        <label className="label" htmlFor="password">Password:</label>
+        <label className="label" htmlFor="password">{password}:</label>
         <Field className="input" id="password" type="password" name="password" />
         {touched.password && errors.password && (
           <p className="error-message">{errors.password}</p>
         )}
-        <input className="btn" type="submit" value="Signup" />
+        <input className="btn" type="submit" value={signup} />
       </Form>
 
       <p className="bottom-text">
-        Already have account?
-        <Link to={'/login'}> Login</Link>
+        {already}
+        <Link to={'/login'}> {login}</Link>
       </p>
     </section>
   );
@@ -44,7 +53,7 @@ export default withAuth(
         .catch(({ response }) => {
           if (response && response.status === 422) {
             setErrors({
-              username: 'Este usuario ya existe'
+              username: text.errors.exists
             });
           }
         });
