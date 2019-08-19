@@ -12,5 +12,3 @@ const Header = props => {
 };
 
 export default Header;
-
-/* <p onClick={this.props.logout}>Logout</p> */
