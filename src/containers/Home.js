@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 import withAuth from '../hoc/withAuth.js';
-import messagesService from '../services/messages-service';
+import messageService from '../services/message-service';
 import MessageCard from '../components/MessageCard';
 import Footer from '../components/Footer';
 import text from '../translations/texts_ES.json';
@@ -16,13 +16,16 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    messagesService.getAllMessages().then(res => {
-      this.setState({ messages: res.data.messages });
+    messageService.getAllMessages().then(res => {
+      const messages = res.data.messages.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      this.setState({ messages });
     });
   }
 
   handleDeleteMessage = id => {
-    messagesService.deleteMessage(id).then(() => {
+    messageService.deleteMessage(id).then(() => {
       const filteredMessages = this.state.messages.filter(message => {
         return message._id !== id;
       });
@@ -43,7 +46,7 @@ class Home extends Component {
               ? messages.map(message => (
                   <React.Fragment key={message._id}>
                     <MessageCard
-                      message={message}
+                      messageId={message._id}
                       handleDeleteMessage={this.handleDeleteMessage}
                     />
                   </React.Fragment>

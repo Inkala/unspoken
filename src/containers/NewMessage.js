@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import messagesService from '../services/messages-service';
+import messageService from '../services/message-service';
 import { ReactComponent as Publish } from '../svg/publish.svg';
 import text from '../translations/texts_ES.json';
 
@@ -17,7 +17,7 @@ class NewMessage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    messagesService
+    messageService
       .createMessage({
         content: this.state.message
       })

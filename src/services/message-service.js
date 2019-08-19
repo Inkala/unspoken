@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class MessagesService {
+class MessageService {
   constructor() {
     this.messages = axios.create({
       baseURL: 'http://localhost:4000',
@@ -21,8 +21,6 @@ class MessagesService {
   }
 
   editMessage(id, editedMessage) {
-    console.log('<< id >>', id)
-    console.log('<< editedMessage >>', editedMessage)
     return this.messages
       .put(`/messages/${id}/edit`, editedMessage)
       .then(res => res);
@@ -33,6 +31,6 @@ class MessagesService {
   }
 }
 
-const messagesService = new MessagesService();
+const messageService = new MessageService();
 
-export default messagesService;
+export default messageService;

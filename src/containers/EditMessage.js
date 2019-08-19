@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import messagesService from '../services/messages-service';
+import messageService from '../services/message-service';
 import { ReactComponent as Publish } from '../svg/publish.svg';
 import text from '../translations/texts_ES.json';
 
@@ -13,7 +13,7 @@ class NewMessage extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    messagesService.getOneMessage(id).then(res => {
+    messageService.getOneMessage(id).then(res => {
       const message = res.data.message.content;
       this.setState({ message });
     });
@@ -27,7 +27,7 @@ class NewMessage extends Component {
     const { id } = this.props.match.params;
     const content = this.state.message;
     event.preventDefault();
-    messagesService
+    messageService
       .editMessage(id, { content })
       .then(() => {
         this.setState({ redirect: true });

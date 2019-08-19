@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AuthProvider from './contexts/auth-context.js';
 import PrivateRoute from './components/PrivateRoute.js';
@@ -34,7 +34,7 @@ class App extends Component {
           </main>
         </AuthProvider>
       </Router>
-    )
+    );
   }
 }
 
