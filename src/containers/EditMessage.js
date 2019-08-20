@@ -62,5 +62,3 @@ class NewMessage extends Component {
 }
 
 export default NewMessage;
-
-// Te quiero, pero me da miedo decírtelo por si te vuelves a alejar de mí. Te quiero, pero me da miedo decírtelo por si te vuelves a alejar de mí. Te quiero, pero me da miedo decírtelo por si te vuelves a alejar de mí. Te quiero, pero me da miedo decir.

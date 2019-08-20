@@ -108,7 +108,7 @@ An app to share thoughts and feelings and support others. People can create thei
 **Comments Service**
 - getAllComments()
 - addNewComment(messageId, data)
-- removeComent(messageId)
+- removeComment(messageId)
 
 ## Links
 

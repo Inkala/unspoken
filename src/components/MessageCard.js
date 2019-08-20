@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import withAuth from '../hoc/withAuth';
 import CardMenu from './CardMenu';
@@ -205,9 +206,9 @@ class MessageCard extends Component {
             {likes}
           </div>
           <div className="reaction-btn">
-            <button className="reaction-icon">
+            <Link className="reaction-icon" to={`/messages/${_id}`}>
               <Comments />
-            </button>
+            </Link>
             {comments ? comments.length : 0}
           </div>
           <div className="reaction-btn">

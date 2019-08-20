@@ -37,7 +37,7 @@ class Navbar extends Component {
                 <Profile
                   className="nav-icons"
                   onClick={() => {
-                    this.setState({ sideMenuShowing: true });
+                    this.setState({ sideMenuShowing: !this.state.sideMenuShowing });
                   }}
                 />
               </li>

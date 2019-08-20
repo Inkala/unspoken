@@ -43,7 +43,9 @@
     "remove": "Eliminar mensaje",
     "download": "Eliminar mensaje",
     "deactivate_notifications": "Desactivar las notificaciones de esta publicación",
-    "activate_notifications": "Activar las notificaciones de esta publicación"
+    "activate_notifications": "Activar las notificaciones de esta publicación",
+    "comments": "Comentarios",
+    "comment": "Escribe tu comentario"
   },
   "categories": {
     "love": "Amor",
@@ -70,7 +72,7 @@
     "seen": "No Vistas",
     "reaction": "personas han reaccionado a tu publicación y se sienten igual que tu",
     "like": "personas les gusta tu publicación",
-    "coment": "personas han comentado tu publicación"
+    "comment": "personas han comentado tu publicación"
   },
   "errors": {
     "exists": "Este usuario ya existe",
