@@ -3,7 +3,7 @@ import axios from 'axios';
 class ReactionsService {
   constructor() {
     this.messages = axios.create({
-      baseURL: 'http://localhost:4000',
+      baseURL: process.env.REACT_APP_BACKEND_DOMAIN,
       withCredentials: true
     });
   }

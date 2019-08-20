@@ -113,7 +113,7 @@ class MessageCard extends Component {
     messageService
       .editMessage(_id, content)
       .then(() => {
-        this.setState({ redirect: true });
+        // this.setState({ redirect: true });
       })
       .catch(err => console.log(err));
     const message = { ...this.state.message };
