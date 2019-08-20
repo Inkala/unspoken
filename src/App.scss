@@ -113,7 +113,33 @@ button {
   p {
     margin: 0;
   }
+  .notification {
+    position: relative;
+    .notification-wrapper {
+      background-color: red;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+      animation: slidein 0.25s forwards;
+      animation-timing-function: cubic-bezier(.19,.66,.65,1.54)
+    }
+  }
 }
+
+@keyframes slidein {
+  from {
+    top: -15px;
+    opacity: 0;
+  }
+  
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+
 
 .side-menu {
   position: absolute;
