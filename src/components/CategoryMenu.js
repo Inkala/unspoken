@@ -2,8 +2,7 @@ import React from 'react';
 
 import text from '../translations/texts_ES.json';
 
-function CategoryMenu() {
-  console.log(text.categories)
+function CategoryMenu(props) {
   const {
     love,
     hate,
@@ -15,12 +14,24 @@ function CategoryMenu() {
   return (
     <section className="category-menu">
       <ul>
-        <li>{love}</li>
-        <li>{hate}</li>
-        <li>{nostalgia}</li>
-        <li>{family}</li>
-        <li>{friendship}</li>
-        <li>{other}</li>
+        <li onClick={()=>{
+          props.changeCategory('love')
+        }}>{love}</li>
+        <li onClick={()=>{
+          props.changeCategory('hate')
+        }}>{hate}</li>
+        <li onClick={()=>{
+          props.changeCategory('nostalgia')
+        }}>{nostalgia}</li>
+        <li onClick={()=>{
+          props.changeCategory('family')
+        }}>{family}</li>
+        <li onClick={()=>{
+          props.changeCategory('friendship')
+        }}>{friendship}</li>
+        <li onClick={()=>{
+          props.changeCategory('other')
+        }}>{other}</li>
       </ul>
     </section>
   );

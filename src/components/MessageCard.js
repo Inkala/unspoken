@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import withAuth from '../hoc/withAuth';
 import CardMenu from './CardMenu';
@@ -16,6 +17,7 @@ import text from '../translations/texts_ES.json';
 class MessageCard extends Component {
   state = {
     message: {},
+    myMessage: false,
     menuShowing: false,
     categoryShowing: false,
     likes: 0,
@@ -29,6 +31,7 @@ class MessageCard extends Component {
     messageService.getOneMessage(messageId).then(res => {
       const message = res.data.message;
       const userId = this.props.user._id;
+      const myMessage = message.owner === this.props.user.username;
       const likes = message.likes.length;
       const reactions = message.reactions.length;
       let likedByMe = this.state.likedByMe;
@@ -43,7 +46,14 @@ class MessageCard extends Component {
           myReaction = reaction._id;
         }
       });
-      this.setState({ message, likes, reactions, likedByMe, myReaction });
+      this.setState({
+        message,
+        myMessage,
+        likes,
+        reactions,
+        likedByMe,
+        myReaction
+      });
     });
   }
 
@@ -97,6 +107,20 @@ class MessageCard extends Component {
       });
   };
 
+  handleCategoryChange = category => {
+    const { _id } = this.state.message;
+    const content = { category };
+    messageService
+      .editMessage(_id, content)
+      .then(() => {
+        this.setState({ redirect: true });
+      })
+      .catch(err => console.log(err));
+    const message = { ...this.state.message };
+    message.category = category;
+    this.setState({ message });
+  };
+
   render() {
     const {
       category,
@@ -112,7 +136,8 @@ class MessageCard extends Component {
       likes,
       reactions,
       likedByMe,
-      myReaction
+      myReaction,
+      myMessage
     } = this.state;
     const { i_understand } = text.home;
     const formatedDate = this.formatDate(new Date(created_at));
@@ -126,16 +151,24 @@ class MessageCard extends Component {
           </p>
           <p>{formatedDate[0]}</p>
           <p>{formatedDate[1]}</p>
-          <button
-            className="categories"
-            onClick={() => {
-              this.setState({ categoryShowing: !categoryShowing });
-            }}
-          >
-            {category ? { category } : 'Categoría'}
-            <ArrowDown />
-            {categoryShowing ? <CategoryMenu /> : null}
-          </button>
+          {myMessage ? (
+            <button
+              className={`categories${category ? '' : ' no-cat'}`}
+              onClick={() => {
+                this.setState({ categoryShowing: !categoryShowing });
+              }}
+            >
+              {category ? text.categories[category] : 'Categoría'}
+              <ArrowDown />
+              {categoryShowing ? (
+                <CategoryMenu changeCategory={this.handleCategoryChange} />
+              ) : null}
+            </button>
+          ) : (
+            <p className={`categories${category ? '' : ' no-cat'}`}>
+              {category ? text.categories[category] : 'Categoría'}
+            </p>
+          )}
         </section>
         <section className="message-reactions">
           <div className="reaction-btn">
@@ -173,20 +206,24 @@ class MessageCard extends Component {
             {likes}
           </div>
           <div className="reaction-btn">
-            <button className="reaction-icon">
+            <Link className="reaction-icon" to={`/messages/${_id}`}>
               <Comments />
-            </button>
+            </Link>
             {comments ? comments.length : 0}
           </div>
           <div className="reaction-btn">
-            <button
-              className="reaction-icon"
-              onClick={() => {
-                this.setState({ menuShowing: !menuShowing });
-              }}
-            >
-              <More />
-            </button>
+            {myMessage ? (
+              <button
+                className="reaction-icon"
+                onClick={() => {
+                  this.setState({ menuShowing: !menuShowing });
+                }}
+              >
+                <More />
+              </button>
+            ) : (
+              <More className="disabled" />
+            )}
           </div>
           {menuShowing ? (
             <CardMenu

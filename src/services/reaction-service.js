@@ -25,8 +25,26 @@ class ReactionsService {
     return this.messages.delete(`/reactions/${reactionId}/${messageId}/delete`)
       .then(res => res);
   }
+  
+  addComment(messageId, newMessage) {
+    return this.messages.post(`/comments/${messageId}/new`, newMessage);
+  }
 }
 
 const reactionsService = new ReactionsService();
 
 export default reactionsService;
+
+// getOneMessage(id) {
+//   return this.messages.get(`/messages/${id}`).then(res => res);
+// }
+
+// editMessage(id, editedMessage) {
+//   return this.messages
+//     .put(`/messages/${id}/edit`, editedMessage)
+//     .then(res => res);
+// }
+
+// deleteMessage(id) {
+//   return this.messages.delete(`/messages/${id}/delete`).then(res => res);
+// }

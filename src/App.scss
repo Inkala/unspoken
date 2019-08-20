@@ -1,11 +1,12 @@
 // Variables
-$dark-grey: #2a2a2b;
+$dark-gray: #2a2a2b;
 $gunmetal: #606666;
-$light-gray: #d0d0d0;
-$very-light-gray: #eaeaea;
-$dark-blue-grey: #0d1c2e;
-$greyish-blue: #5b859c;
-$light-grey-blue: #99b1bd;
+$gray: #d0d0d0;
+$light-gray: #eaeaea;
+$very-light-gray: #f6f6f6;
+$dark-blue-gray: #0d1c2e;
+$grayish-blue: #5b859c;
+$light-gray-blue: #99b1bd;
 $error: #ba0000;
 $light-peach: #ead7c0;
 $white: #ffffff;
@@ -24,11 +25,11 @@ html {
 body #root {
   margin: 0;
   padding: 0;
-  color: $dark-grey;
+  color: $dark-gray;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  background-color: $very-light-gray;
+  background-color: $light-gray;
 }
 
 h1,
@@ -54,7 +55,7 @@ button {
 .main-container .btn {
   border: none;
   color: $white;
-  background-color: $greyish-blue;
+  background-color: $grayish-blue;
   &:focus,
   &:hover {
     color: $white;
@@ -70,14 +71,14 @@ button {
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: $dark-grey;
+  background-color: $dark-gray;
   color: $white;
   height: 50px;
   align-items: center;
   padding: 0 1em;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
   .nav-logo {
     height: 55%;
@@ -97,7 +98,7 @@ button {
     align-items: center;
     li {
       margin: 0;
-      margin-left: 5px;
+      margin-left: 10px;
       list-style: none;
       height: 50%;
       svg {
@@ -111,6 +112,56 @@ button {
   }
   p {
     margin: 0;
+  }
+}
+
+.side-menu {
+  position: absolute;
+  background-color: $grayish-blue;
+  z-index: 10;
+  color: $white;
+  width: 100%;
+  right: 0;
+  padding: 0;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  z-index: 20;
+  transform: translateX(100%);
+  transition: all 0.15s ease-out;
+  ul,
+  li,
+  p {
+    margin: 0;
+  }
+  &.showing {
+    transform: translateX(0);
+    transition: all 0.35s ease-out;
+  }
+  .greeting {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul {
+    padding: 0 30px;
+    border-top: 1px solid $light-gray-blue;
+    li {
+      display: flex;
+      list-style: none;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+    }
+  }
+  svg {
+    height: 16px;
+    margin-right: 15px;
+    margin-bottom: 2px;
+    path {
+      fill: $white;
+    }
   }
 }
 
@@ -129,7 +180,7 @@ button {
     width: 100%;
     margin-top: 10%;
     .label {
-      color: $dark-blue-grey;
+      color: $dark-blue-gray;
       margin: 3% 0;
       font-family: 'EB Garamond', serif;
       font-size: 1.2em;
@@ -141,15 +192,17 @@ button {
       font-size: 1.1em;
       padding: 8px 10px;
       &:focus {
-        border-color: $greyish-blue;
+        border-color: $grayish-blue;
       }
     }
     .btn {
       margin: 5% auto;
       font-size: 1em;
-      padding: 0.1em 0.9em 0.2em;
+      padding: 0 20px;
       font-weight: 300;
       text-transform: inherit;
+      border-radius: 0;
+      height: auto;
     }
   }
   .error-message {
@@ -167,7 +220,7 @@ button {
     text-align: center;
     font-size: 0.9em;
     a {
-      color: $greyish-blue;
+      color: $grayish-blue;
     }
   }
 }
@@ -184,27 +237,6 @@ button {
   }
   svg {
     width: 80%;
-  }
-  .clouds-header {
-    border-bottom: 1px solid $light-gray;
-    position: relative;
-    height: 135px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .clouds {
-      position: absolute;
-      height: 65%;
-      opacity: 0.85;
-    }
-    .left-cloud {
-      left: 0;
-      bottom: 0;
-    }
-    .right-cloud {
-      right: 0;
-      top: 0;
-    }
   }
   h2 {
     text-align: center;
@@ -234,8 +266,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $dark-grey;
-    border: 2px solid $dark-grey;
+    color: $dark-gray;
+    border: 2px solid $dark-gray;
     background: none;
     width: 90%;
     height: auto;
@@ -247,6 +279,28 @@ button {
       width: auto;
       margin-left: 5px;
     }
+  }
+}
+
+.clouds-header {
+  border-bottom: 1px solid $gray;
+  position: relative;
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .clouds {
+    position: absolute;
+    height: 65%;
+    opacity: 0.85;
+  }
+  .left-cloud {
+    left: 0;
+    bottom: 0;
+  }
+  .right-cloud {
+    right: 0;
+    top: 0;
   }
 }
 
@@ -288,18 +342,22 @@ button {
         margin: 0;
         margin-left: auto;
         padding: 0;
-        color: $dark-grey;
+        color: $dark-gray;
         height: auto;
         line-height: 1;
-        color: $greyish-blue;
+        color: $grayish-blue;
         font-weight: 700;
         position: relative;
+        &.no-cat {
+          color: $gunmetal;
+        }
         svg {
           height: 8px;
           width: auto;
           margin-left: 5px;
+          margin-top: 2px;
           path {
-            fill: $greyish-blue;
+            fill: $grayish-blue;
           }
         }
       }
@@ -334,33 +392,36 @@ button {
           border: none;
           margin: 0;
           padding: 0;
-          svg {
-            width: 25px;
-            height: auto;
-            margin-right: 7px;
-            path {
-              fill: $dark-grey;
-            }
+        }
+        svg {
+          width: 25px;
+          height: auto;
+          margin-right: 7px;
+          path {
+            fill: $dark-gray;
           }
-          .like {
-            width: 30px;
-            margin-right: 5px;
-            path {
-              fill: $very-light-gray;
-              stroke: $dark-grey;
-            }
+          &.disabled path {
+            fill: $gray;
           }
-          .by-me {
-            path {
-              fill: $greyish-blue;
-              stroke: $greyish-blue;
-            }
+        }
+        .like {
+          width: 30px;
+          margin-right: 5px;
+          path {
+            fill: $light-gray;
+            stroke: $dark-gray;
+          }
+        }
+        .by-me {
+          path {
+            fill: $grayish-blue;
+            stroke: $grayish-blue;
           }
         }
       }
       .text-button {
-        color: $dark-grey;
-        border: 2px solid $dark-grey;
+        color: $dark-gray;
+        border: 2px solid $dark-gray;
         padding: 8px;
         margin-bottom: 0;
         margin-right: 7px;
@@ -368,14 +429,15 @@ button {
         font-size: 1.15em !important;
         &.by-me {
           color: $white;
-          background-color: $greyish-blue;
-          border-color: $greyish-blue;
+          background-color: $grayish-blue;
+          border-color: $grayish-blue;
         }
       }
     }
   }
-  .card-menu, .category-menu {
-    border: 1px solid $light-gray;
+  .card-menu,
+  .category-menu {
+    border: 1px solid $gray;
     display: flex;
     justify-content: flex-end;
     background-color: $white;
@@ -395,14 +457,14 @@ button {
         margin: 7px;
         padding-top: 3px;
         a {
-          color: $dark-grey;
+          color: $dark-gray;
         }
         svg {
           height: 15px;
           width: auto;
           margin-right: 10px;
           path {
-            fill: $dark-grey;
+            fill: $dark-gray;
           }
         }
       }
@@ -413,6 +475,7 @@ button {
     top: 20px;
     right: -15%;
     width: 97vw;
+    color: $grayish-blue;
     ul {
       width: 100%;
       flex-direction: row;
@@ -442,7 +505,7 @@ footer {
     }
   }
   p {
-    color: $light-gray;
+    color: $gray;
     text-align: center;
     font-size: 0.85em;
     margin: 0;
@@ -468,18 +531,82 @@ footer {
     }
     button {
       background: none;
-      border: 2px solid $greyish-blue;
-      color: $greyish-blue;
+      border: 2px solid $grayish-blue;
+      color: $grayish-blue;
       display: flex;
       align-items: center;
       margin: auto 0 75px;
       padding: 10px 30px;
       svg {
-        fill: $greyish-blue;
+        fill: $grayish-blue;
         height: 15px;
         margin-right: 5px;
         transform: rotate(-90deg);
       }
+    }
+  }
+}
+
+.messages-view {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  .message-card {
+    margin-bottom: 0;
+  }
+  .clouds-header {
+    height: 100px;
+    svg {
+      width: 75%;
+    }
+    .clouds {
+      height: 75%;
+    }
+  }
+  .comments {
+    background-color: $very-light-gray;
+    h3 {
+      font-size: 1em;
+      margin: 10px 20px;
+    }
+  }
+  .comments-form {
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding: 10px 15px;
+    textarea {
+      border: none;
+      min-height: auto;
+      font-size: 0.9em;
+      padding: 10px;
+    }
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin-top: 3px;
+      svg {
+        height: 20px;
+        path {
+          fill: $grayish-blue;
+        }
+      }
+    }
+  }
+  & * {
+    margin: 0;
+  }
+  .comment-card {
+    border-top: 1px solid $gray;
+    font-size: 0.9em;
+    padding: 10px 20px;
+    .date span {
+      color: $grayish-blue;
+      font-size: 0.8em;
+      margin-right: 5px;
     }
   }
 }
