@@ -8,7 +8,8 @@ import text from '../translations/texts_ES.json';
 class NewMessage extends Component {
   state = {
     message: '',
-    redirect: false
+    redirect: false,
+    placeholderShowing: true
   };
 
   handleChange = event => {
@@ -28,20 +29,33 @@ class NewMessage extends Component {
   };
 
   render() {
-    const { message, redirect } = this.state;
-    const { post } = text.new_message;
-
+    const { message, redirect, placeholderShowing } = this.state;
+    const { post, placeholder } = text.new_message;
     return (
       <article className="message-editor">
         <section className="message-setting" />
         <form onSubmit={this.handleSubmit}>
-          <textarea
-            id="message"
-            name="message"
-            rows="25"
-            value={message}
-            onChange={this.handleChange}
-          />
+          {placeholderShowing ? (
+            <div
+              className="placeholder"
+              onClick={() => {
+                this.setState({ placeholderShowing: false });
+              }}
+            >
+              {placeholder.map((par, i) => (
+                <p key={i}>{par}</p>
+              ))}
+            </div>
+          ) : (
+            <textarea
+              autoFocus
+              id="message"
+              name="message"
+              rows="25"
+              value={message}
+              onChange={this.handleChange}
+            />
+          )}
           <button>
             <Publish />
             {post}

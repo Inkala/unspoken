@@ -514,6 +514,17 @@ footer {
 
 .message-editor {
   height: calc(100vh - 50px);
+  .placeholder {
+    color: $gunmetal;
+    font-family: 'EB Garamond', serif;
+    text-align: center;
+    padding: 25% 15% 0;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+    p:last-child{
+      font-weight: 700;
+    }
+  }
   form {
     height: 100%;
     display: flex;

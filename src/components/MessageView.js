@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import MessageCard from './MessageCard';
 import CommentsForm from './CommentsForm';
@@ -13,7 +14,8 @@ class MessageView extends Component {
   state = {
     messageId: '',
     newComment: '',
-    comments: []
+    comments: [],
+    redirect: false
   };
 
   componentDidMount() {
@@ -35,11 +37,12 @@ class MessageView extends Component {
     event.preventDefault();
     const newComment = this.state.newComment;
     const { id } = this.props.match.params;
-    reactionService.addComment((id), { newComment })
-      .then((res) => {
-        const {comment} = res.data
-        const comments = [...this.state.comments]
-        comments.push(comment)
+    reactionService
+      .addComment(id, { newComment })
+      .then(res => {
+        const { comment } = res.data;
+        const comments = [...this.state.comments];
+        comments.push(comment);
         this.setState({ comments, newComment: '' });
       })
       .catch(err => console.log(err));
@@ -55,8 +58,14 @@ class MessageView extends Component {
     return [`${day}/${mon}/${yr}`, `${date.getHours()}.${date.getMinutes()} h`];
   };
 
+  handleDeleteMessage = id => {
+    messageService.deleteMessage(id).then(() => {
+      this.setState({ redirect: true });
+    });
+  };
+
   render() {
-    const { messageId, comments, newComment } = this.state;
+    const { messageId, comments, newComment, redirect } = this.state;
     const comments_title = text.message_actions.comments;
     return (
       <section className="messages-view">
@@ -64,21 +73,32 @@ class MessageView extends Component {
         <section className="messages-wrapper">
           {messageId && (
             <MessageCard
-            messageId={messageId}
-            handleDeleteMessage={this.handleDeleteMessage}
+              messageId={messageId}
+              handleDeleteMessage={() => {
+                this.handleDeleteMessage(messageId);
+              }}
             />
-            )}
+          )}
         </section>
         <section className="comments">
           <h3>{comments_title}</h3>
           {comments &&
             comments.map(comment => {
-              const formatedDate = this.formatDate(new Date(comment.created_at));
-              return <article key={comment._id} className="comment-card">
-                <p><strong>{comment.owner}</strong></p>
-                <p>{comment.content}</p>
-                <p className="date"><span>{formatedDate[0]}</span><span>{formatedDate[1]}</span></p>
-              </article>
+              const formatedDate = this.formatDate(
+                new Date(comment.created_at)
+              );
+              return (
+                <article key={comment._id} className="comment-card">
+                  <p>
+                    <strong>{comment.owner}</strong>
+                  </p>
+                  <p>{comment.content}</p>
+                  <p className="date">
+                    <span>{formatedDate[0]}</span>
+                    <span>{formatedDate[1]}</span>
+                  </p>
+                </article>
+              );
             })}
         </section>
         <CommentsForm
@@ -86,6 +106,7 @@ class MessageView extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
+        {redirect ? <Redirect to="/" /> : null}
       </section>
     );
   }
