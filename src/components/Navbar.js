@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import authService from '../services/auth-service';
 import withAuth from '../hoc/withAuth.js';
 import SideMenu from './SideMenu';
+import NotificationsMenu from './NotificationsMenu';
 import { ReactComponent as Logo } from '../svg/logo-icon.svg';
 import { ReactComponent as Notifications } from '../svg/notifications.svg';
 import { ReactComponent as Profile } from '../svg/profile.svg';
@@ -13,37 +14,49 @@ import text from '../translations/texts_ES.json';
 class Navbar extends Component {
   state = {
     sideMenuShowing: false,
+    notificationsShowing: false,
     userMessages: null,
-    notifications: false,
+    notifications: [],
     myMessages: null
   };
 
   componentDidMount() {
+    this.filterNotifications();
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Prev:', prevProps)
+    console.log('Curr:', this.props)
+    if(prevState.notificationsShowing !== this.state.notificationsShowing) {
+      this.filterNotifications();
+    }
+  }
+
+  filterNotifications = () => {
     authService.myMessages().then(res => {
-      let notifications = false;
+      const notifications = [];
       res.myMessages.map(message => {
         const { likes, comments, reactions } = message;
-        likes.map(like => {
-          if (like.new) {
-            notifications = true;
-          }
-          return like;
-        });
-        reactions.map(reaction => {
-          if (reaction.new) {
-            notifications = true;
-          }
-          return reaction;
-        });
-        comments.map(comment => {
-          if (comment.new) {
-            notifications = true;
-          }
-          return comment;
-        });
+        const notification = {
+          id: message._id,
+          content: message.content
+        };
+        notification.likes = likes.filter(like => like.new);
+        notification.reactions = reactions.filter(reaction => reaction.new);
+        notification.comments = comments.filter(comment => comment.new);
+        if (
+          notification.likes.length ||
+          notification.reactions.length ||
+          notification.comments.length
+        ) {
+          notifications.unshift(notification);
+        }
         return message;
       });
-      this.setState({ myMessages: res.myMessages, notifications });
+      this.setState({
+        myMessages: res.myMessages,
+        notifications
+      });
     });
   }
 
@@ -54,39 +67,57 @@ class Navbar extends Component {
 
   render() {
     const { signup } = text.signup;
-    const {notifications} = this.state;
+    const { notifications } = this.state;
     return (
       <>
         <nav className="navbar">
           <Link to="/" className="nav-logo">
-            <Logo />
+            <Logo onClick={() => {
+              this.setState({
+                notificationsShowing: false,
+                sideMenuShowing: false
+              });
+            }}/>
           </Link>
           {this.props.isLoggedIn ? (
             <ul>
-              <li className="notification">
-                {notifications ? <div className="notification-wrapper"></div> : null}
+              <li className="notification" onClick={() => {
+                this.setState({
+                  notificationsShowing: !this.state.notificationsShowing,
+                  sideMenuShowing: false
+                });
+              }}>
+                {notifications.length ? (
+                  <div className="notification-wrapper" />
+                ) : null}
                 <Notifications className="nav-icons" />
               </li>
-              <li>
-                <Profile
-                  className="nav-icons"
-                  onClick={() => {
-                    this.setState({
-                      sideMenuShowing: !this.state.sideMenuShowing
-                    });
-                  }}
-                />
+              <li onClick={() => {
+                this.setState({
+                  sideMenuShowing: !this.state.sideMenuShowing,
+                  notificationsShowing: false
+                });
+              }}>
+                <Profile className="nav-icons"/>
               </li>
               <li>
                 <FAQs className="nav-icons" />
               </li>
             </ul>
           ) : (
-            <Link className="btn signup-btn" to="/signup">
-              {signup}
-            </Link>
+            <Link className="btn signup-btn" to="/signup">{signup}</Link>
           )}
         </nav>
+        <NotificationsMenu
+          notifications={notifications}
+          showing={this.state.notificationsShowing}
+          handleClose={() => {
+            this.setState({ notificationsShowing: false });
+          }}
+          handleFilter={() => {
+            this.filterNotifications();
+          }}
+        />
         <SideMenu
           showing={this.state.sideMenuShowing}
           logout={this.logout}

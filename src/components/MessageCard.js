@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import withAuth from '../hoc/withAuth';
 import CardMenu from './CardMenu';
@@ -29,6 +29,20 @@ class MessageCard extends Component {
   componentDidMount() {
     const { messageId } = this.props;
     messageService.getOneMessage(messageId).then(res => {
+      this.setMessagesToState(res);
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { id } = this.props.match.params;
+    if (prevProps.match.params.id !== id) {
+      messageService.getOneMessage(id).then(res => {
+        this.setMessagesToState(res);
+      }); 
+    }
+  }
+
+  setMessagesToState = (res) => {
       const message = res.data.message;
       const userId = this.props.user._id;
       const myMessage = message.owner === this.props.user.username;
@@ -54,7 +68,6 @@ class MessageCard extends Component {
         likedByMe,
         myReaction
       });
-    });
   }
 
   formatDate = date => {
@@ -112,9 +125,7 @@ class MessageCard extends Component {
     const content = { category };
     messageService
       .editMessage(_id, content)
-      .then(() => {
-        // this.setState({ redirect: true });
-      })
+      .then(res => res)
       .catch(err => console.log(err));
     const message = { ...this.state.message };
     message.category = category;
@@ -239,4 +250,4 @@ class MessageCard extends Component {
   }
 }
 
-export default withAuth(MessageCard);
+export default withRouter(withAuth(MessageCard));

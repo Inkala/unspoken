@@ -68,11 +68,13 @@
     "logout": "Salir"
   },
   "notifications": {
-    "not_seen": "No Vistas",
-    "seen": "No Vistas",
-    "reaction": "personas han reaccionado a tu publicación y se sienten igual que tu",
-    "like": "personas les gusta tu publicación",
-    "comment": "personas han comentado tu publicación"
+    "not_seen": "Notificaciones",
+    "seen": "Vistas",
+    "pre_like": "A ",
+    "people": "personas",
+    "like": "les gusta tu publicación",
+    "reaction": "han reaccionado a tu publicación y se sienten igual que tu",
+    "comment": "han comentado tu publicación"
   },
   "errors": {
     "exists": "Este usuario ya existe",

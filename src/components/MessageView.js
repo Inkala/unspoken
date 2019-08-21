@@ -12,14 +12,16 @@ import text from '../translations/texts_ES.json';
 
 class MessageView extends Component {
   state = {
+    message: null,
     messageId: '',
     newComment: '',
     comments: [],
-    redirect: false
+    redirect: false,
   };
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    this.removeNotifications(id);
     messageService.getOneMessage(id).then(res => {
       const { comments } = res.data.message;
       this.setState({
@@ -27,6 +29,17 @@ class MessageView extends Component {
         comments
       });
     });
+  }
+
+  removeNotifications = (messageId) => {
+    messageService
+      .removeNotifications(messageId)
+      .then((res) => {
+        console.log(res.data.seenMessage._id)
+        this.setState({
+        })
+      })
+      .catch(err => console.log(err));
   }
 
   handleChange = event => {

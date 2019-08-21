@@ -8,6 +8,7 @@ $dark-blue-gray: #0d1c2e;
 $grayish-blue: #5b859c;
 $light-gray-blue: #99b1bd;
 $error: #ba0000;
+$notification: #e1091e;
 $light-peach: #ead7c0;
 $white: #ffffff;
 
@@ -116,13 +117,13 @@ button {
   .notification {
     position: relative;
     .notification-wrapper {
-      background-color: red;
+      background-color: $notification;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       position: absolute;
       animation: slidein 0.25s forwards;
-      animation-timing-function: cubic-bezier(.19,.66,.65,1.54)
+      animation-timing-function: cubic-bezier(0.19, 0.66, 0.65, 1.54);
     }
   }
 }
@@ -132,16 +133,15 @@ button {
     top: -15px;
     opacity: 0;
   }
-  
+
   to {
     top: 0;
     opacity: 1;
   }
 }
 
-
-
-.side-menu {
+.side-menu,
+.notifications-menu {
   position: absolute;
   background-color: $grayish-blue;
   z-index: 10;
@@ -164,19 +164,19 @@ button {
     transform: translateX(0);
     transition: all 0.35s ease-out;
   }
-  .greeting {
+  .greeting,
+  .title {
     padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   ul {
-    padding: 0 30px;
     border-top: 1px solid $light-gray-blue;
     li {
       display: flex;
       list-style: none;
-      padding: 20px 0;
+      padding: 20px 30px;
       display: flex;
       align-items: center;
     }
@@ -187,6 +187,28 @@ button {
     margin-bottom: 2px;
     path {
       fill: $white;
+    }
+  }
+  .title {
+    font-size: 1.1em;
+  }
+}
+.notifications-menu {
+  transform: translateX(-100%);
+  overflow: auto;
+  padding-bottom: 48px;
+  ul {
+    border-top: 1px solid $white;
+    .notification-item {
+      border-bottom: 1px solid $light-gray-blue;
+      flex-direction: column;
+      small {
+        align-self: flex-start;
+        color: $light-gray-blue;
+      }
+      a {
+        color: $white;
+      }
     }
   }
 }
@@ -332,6 +354,7 @@ button {
 
 .messages-wrapper {
   margin-bottom: 25px;
+  background-color: $light-gray;
   .message-card {
     display: flex;
     flex-direction: column;
@@ -547,7 +570,7 @@ footer {
     padding: 25% 15% 0;
     letter-spacing: 1px;
     font-size: 1.1em;
-    p:last-child{
+    p:last-child {
       font-weight: 700;
     }
   }
@@ -588,11 +611,13 @@ footer {
   min-height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
+  background-color: $very-light-gray;
   .message-card {
     margin-bottom: 0;
   }
   .clouds-header {
     height: 100px;
+    background-color: $light-gray;
     svg {
       width: 75%;
     }
@@ -601,7 +626,6 @@ footer {
     }
   }
   .comments {
-    background-color: $very-light-gray;
     h3 {
       font-size: 1em;
       margin: 10px 20px;
@@ -617,8 +641,9 @@ footer {
     textarea {
       border: none;
       min-height: auto;
-      font-size: 0.9em;
-      padding: 10px;
+      padding: 6px 10px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1em;
     }
     button {
       background: none;
@@ -643,7 +668,7 @@ footer {
     .date span {
       color: $grayish-blue;
       font-size: 0.8em;
-      margin-right: 5px;
+      margin-right: 10px;
     }
   }
 }

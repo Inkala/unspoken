@@ -29,6 +29,10 @@ class MessageService {
   deleteMessage(id) {
     return this.messages.delete(`/${id}/delete`).then(res => res);
   }
+
+  removeNotifications(id) {
+    return this.messages.put(`/${id}/notifications`).then(res => res);
+  }
 }
 
 const messageService = new MessageService();

@@ -29,6 +29,7 @@ class ReactionsService {
   addComment(messageId, newMessage) {
     return this.messages.post(`/comments/${messageId}/new`, newMessage);
   }
+
 }
 
 const reactionsService = new ReactionsService();

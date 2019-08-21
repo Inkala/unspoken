@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logout } from '../svg/publish.svg';
 import { ReactComponent as Close } from '../svg/cancel.svg';

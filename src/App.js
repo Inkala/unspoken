@@ -32,7 +32,7 @@ class App extends Component {
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/new-message" component={NewMessage} />
               <PrivateRoute path="/:id/edit" component={EditMessage} />
-              <PrivateRoute path="/messages/:id" component={MessageView} />
+              <PrivateRoute path="/messages/:id" exact component={MessageView} />
             </Switch>
           </main>
         </AuthProvider>
