@@ -35,7 +35,7 @@ const NotificationsMenu = props => {
                 <p><strong>
                   {`${pre_like ? pre_like : null}${message.likes.length} ${people} `}
                 </strong>{like}</p>
-                <small>{message.content}</small>
+                <div className="small-wrapper"><p><small>{message.content}</small></p></div>
               </Link>
             );
           }
@@ -45,7 +45,7 @@ const NotificationsMenu = props => {
                 <p><strong>
                   {`${message.reactions.length} ${people} `}
                 </strong>{reaction}</p>
-                <small>{message.content}</small>
+                <div className="small-wrapper"><p><small>{message.content}</small></p></div>
               </Link>
             );
           }
@@ -55,7 +55,7 @@ const NotificationsMenu = props => {
                 <p><strong>
                 {`${message.comments.length} ${people} `}
                 </strong>{comment}</p>
-                <small>{message.content}</small>
+                <div className="small-wrapper"><p><small>{message.content}</small></p></div>
               </Link>
             );
           }

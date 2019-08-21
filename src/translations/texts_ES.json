@@ -26,7 +26,7 @@
     "dont_show": "No volver a mostrar",
     "ready": "Lo tengo",
     "placeholder": [
-      "Aquí tienes un espacio para descargar esas palagras que no has dicho. Sin contexto, sin explicación, simplemente dirígete a esa persona.",
+      "Aquí tienes un espacio para descargar esas palabras que no has dicho. Sin contexto, sin explicación, simplemente dirígete a esa persona.",
       "Hay un máximo de 250 carácteres, así que piensa bien cómo resumir tu mensaje.",
       "Haz click para empezar."
     ],
@@ -79,5 +79,10 @@
   "errors": {
     "exists": "Este usuario ya existe",
     "wrongInfo": "Usuario o contraseña incorrectos"
+  },
+  "confirmation": {
+    "confirm_delete": "¿Seguro que quieres borrar el mensaje?",
+    "delete_message": "Borrar",
+    "cancel_delete": "Cancelar"
   }
 }

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import withAuth from '../hoc/withAuth';
 import CardMenu from './CardMenu';
 import CategoryMenu from './CategoryMenu';
+import ConfirmationModal from './ConfirmationModal';
 
 import { ReactComponent as ArrowDown } from '../svg/arrow-down.svg';
 import { ReactComponent as Like } from '../svg/like.svg';
@@ -20,6 +21,7 @@ class MessageCard extends Component {
     myMessage: false,
     menuShowing: false,
     categoryShowing: false,
+    confirmationShowing: false,
     likes: 0,
     reactions: 0,
     likedByMe: '',
@@ -33,42 +35,42 @@ class MessageCard extends Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { id } = this.props.match.params;
     if (prevProps.match.params.id !== id) {
       messageService.getOneMessage(id).then(res => {
         this.setMessagesToState(res);
-      }); 
+      });
     }
   }
 
-  setMessagesToState = (res) => {
-      const message = res.data.message;
-      const userId = this.props.user._id;
-      const myMessage = message.owner === this.props.user.username;
-      const likes = message.likes.length;
-      const reactions = message.reactions.length;
-      let likedByMe = this.state.likedByMe;
-      let myReaction = this.state.myReaction;
-      message.likes.forEach(like => {
-        if (like.userId === userId) {
-          likedByMe = like._id;
-        }
-      });
-      message.reactions.forEach(reaction => {
-        if (reaction.userId === userId) {
-          myReaction = reaction._id;
-        }
-      });
-      this.setState({
-        message,
-        myMessage,
-        likes,
-        reactions,
-        likedByMe,
-        myReaction
-      });
-  }
+  setMessagesToState = res => {
+    const message = res.data.message;
+    const userId = this.props.user._id;
+    const myMessage = message.owner === this.props.user.username;
+    const likes = message.likes.length;
+    const reactions = message.reactions.length;
+    let likedByMe = this.state.likedByMe;
+    let myReaction = this.state.myReaction;
+    message.likes.forEach(like => {
+      if (like.userId === userId) {
+        likedByMe = like._id;
+      }
+    });
+    message.reactions.forEach(reaction => {
+      if (reaction.userId === userId) {
+        myReaction = reaction._id;
+      }
+    });
+    this.setState({
+      message,
+      myMessage,
+      likes,
+      reactions,
+      likedByMe,
+      myReaction
+    });
+  };
 
   formatDate = date => {
     const day = date.getDate();
@@ -144,6 +146,7 @@ class MessageCard extends Component {
     const {
       menuShowing,
       categoryShowing,
+      modalShowing,
       likes,
       reactions,
       likedByMe,
@@ -239,6 +242,19 @@ class MessageCard extends Component {
           {menuShowing ? (
             <CardMenu
               messageId={_id}
+              handleShowModa={() => {
+                this.setState({ modalShowing: true });
+              }}
+            />
+          ) : null}
+          {modalShowing ? (
+            <ConfirmationModal
+              handleClose={() => {
+                this.setState({
+                  modalShowing: false,
+                  menuShowing: false
+                });
+              }}
               handleDeleteMessage={() => {
                 this.props.handleDeleteMessage(_id);
               }}

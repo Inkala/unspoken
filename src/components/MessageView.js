@@ -16,6 +16,7 @@ class MessageView extends Component {
     messageId: '',
     newComment: '',
     comments: [],
+    commentsLentgh: 0,
     redirect: false,
   };
 
@@ -44,7 +45,7 @@ class MessageView extends Component {
         const { comment } = res.data;
         const comments = [...this.state.comments];
         comments.push(comment);
-        this.setState({ comments, newComment: '' });
+        this.setState({ comments, newComment: '', commentsLentgh: comments.length });
       })
       .catch(err => console.log(err));
   };
@@ -65,8 +66,13 @@ class MessageView extends Component {
     });
   };
 
+  handleCount = () => {
+    const { id } = this.props.match.params;
+    this.setState({ messageId: id });
+  }
+
   render() {
-    const { messageId, comments, newComment, redirect } = this.state;
+    const { messageId, comments, newComment, redirect, commentsLentgh } = this.state;
     const comments_title = text.message_actions.comments;
     return (
       <section className="messages-view">
@@ -75,6 +81,7 @@ class MessageView extends Component {
           {messageId && (
             <MessageCard
               messageId={messageId}
+              comments={commentsLentgh}
               handleDeleteMessage={() => {
                 this.handleDeleteMessage(messageId);
               }}

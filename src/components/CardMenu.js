@@ -10,7 +10,7 @@ const CardMenu = props => {
   return (
     <div className="card-menu">
       <ul>
-        <li onClick={props.handleDeleteMessage}>
+        <li onClick={props.handleShowModa}>
           <Delete /> {remove}
         </li>
         <li>

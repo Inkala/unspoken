@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute.js';
 import AnonRoute from './components/AnonRoute.js';
 import Navbar from './components/Navbar.js';
 import MessageView from './components/MessageView.js';
+import NotFound from './components/NotFound.js';
 
 import './App.scss';
 import 'milligram';
@@ -33,6 +34,7 @@ class App extends Component {
               <PrivateRoute path="/new-message" component={NewMessage} />
               <PrivateRoute path="/:id/edit" component={EditMessage} />
               <PrivateRoute path="/messages/:id" exact component={MessageView} />
+              <Route exact component={NotFound} />
             </Switch>
           </main>
         </AuthProvider>
