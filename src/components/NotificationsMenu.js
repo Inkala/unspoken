@@ -6,7 +6,12 @@ import withAuth from '../hoc/withAuth';
 import text from '../translations/texts_ES.json';
 
 const NotificationsMenu = props => {
-  const { notifications, showing, handleClose, handleFilter } = props;
+  const {
+    notifications,
+    showing,
+    handleClose,
+    removeNotifications
+  } = props;
   const {
     not_seen,
     reaction,
@@ -59,19 +64,19 @@ const NotificationsMenu = props => {
               {likesLi && (
                 <li className="notification-item" onClick={() => {
                   handleClose();
-                  handleFilter();
+                  removeNotifications(message.id)
                 }}>{likesLi}</li>
                 )}
               {reactionsLi && (
                 <li className="notification-item" onClick={() => {
                   handleClose();
-                  handleFilter();
+                  removeNotifications(message.id)
                 }}>{reactionsLi}</li>
                 )}
               {commentLi && (
                 <li className="notification-item" onClick={() => {
                   handleClose();
-                  handleFilter();
+                  removeNotifications(message.id)
                 }}>{commentLi}</li>
               )}
             </React.Fragment>

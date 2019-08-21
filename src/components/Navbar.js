@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import authService from '../services/auth-service';
+import messageService from '../services/message-service';
 import withAuth from '../hoc/withAuth.js';
-import SideMenu from './SideMenu';
 import NotificationsMenu from './NotificationsMenu';
+import SideMenu from './SideMenu';
+
 import { ReactComponent as Logo } from '../svg/logo-icon.svg';
 import { ReactComponent as Notifications } from '../svg/notifications.svg';
 import { ReactComponent as Profile } from '../svg/profile.svg';
@@ -25,8 +27,6 @@ class Navbar extends Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    console.log('Prev:', prevProps)
-    console.log('Curr:', this.props)
     if(prevState.notificationsShowing !== this.state.notificationsShowing) {
       this.filterNotifications();
     }
@@ -50,6 +50,7 @@ class Navbar extends Component {
           notification.comments.length
         ) {
           notifications.unshift(notification);
+          
         }
         return message;
       });
@@ -64,6 +65,16 @@ class Navbar extends Component {
     this.props.logout();
     this.setState({ sideMenuShowing: false });
   };
+
+
+  removeNotifications = (messageId) => {
+    messageService
+      .removeNotifications(messageId)
+      .then((res) => {
+        this.filterNotifications();
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     const { signup } = text.signup;
@@ -114,9 +125,7 @@ class Navbar extends Component {
           handleClose={() => {
             this.setState({ notificationsShowing: false });
           }}
-          handleFilter={() => {
-            this.filterNotifications();
-          }}
+          removeNotifications={this.removeNotifications}
         />
         <SideMenu
           showing={this.state.sideMenuShowing}
