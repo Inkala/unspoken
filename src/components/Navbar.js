@@ -118,7 +118,7 @@ class Navbar extends Component {
           ) : (
             <section className='signup-links'>
               <Link className="btn signup-btn" to="/login">{login}</Link>
-              <span>o</span>
+              <span>/</span>
               <Link className="btn signup-btn" to="/signup">{signup}</Link>
             </section>
           )}
