@@ -13,7 +13,9 @@ class MessageService {
   }
 
   createMessage(newMessage) {
-    return this.messages.post('/new', newMessage);
+    return this.messages.post('/new', newMessage).then(res => {
+      console.log("From Service", res);
+    });
   }
 
   getOneMessage(id) {
@@ -21,9 +23,7 @@ class MessageService {
   }
 
   editMessage(id, editedMessage) {
-    return this.messages
-      .put(`/${id}/edit`, editedMessage)
-      .then(res => res);
+    return this.messages.put(`/${id}/edit`, editedMessage).then(res => res);
   }
 
   deleteMessage(id) {
