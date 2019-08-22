@@ -77,7 +77,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { signup } = text.signup;
+    const { login, signup } = text.signup;
     const { notifications } = this.state;
     return (
       <>
@@ -116,7 +116,11 @@ class Navbar extends Component {
               </li>
             </ul>
           ) : (
-            <Link className="btn signup-btn" to="/signup">{signup}</Link>
+            <section className='signup-links'>
+              <Link className="btn signup-btn" to="/login">{login}</Link>
+              <span>o</span>
+              <Link className="btn signup-btn" to="/signup">{signup}</Link>
+            </section>
           )}
         </nav>
         <NotificationsMenu

@@ -87,10 +87,21 @@ button {
       height: 100%;
     }
   }
-  .signup-btn {
-    padding: 0.1em 0.8em 0.2em;
-    font-weight: 300;
-    font-size: 1.1em;
+  .signup-links {
+    display: flex;
+    align-items: center;
+    .signup-btn {
+      padding: 0;
+      font-weight: 300;
+      font-size: 1.1em;
+      color: $light-gray-blue;
+      border: none;
+      background: none;
+    }
+    span {
+      color: $gray;
+      margin: 0 10px;
+    }
   }
   ul {
     display: flex;
@@ -762,5 +773,14 @@ footer {
   .right-cloud {
     right: 0;
     top: 105px;
+  }
+}
+@media (min-width: 480px) {
+  .main-container {
+  }
+}
+
+@media (min-width: 768px) {
+  .main-container {
   }
 }
