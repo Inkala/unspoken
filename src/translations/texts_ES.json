@@ -15,7 +15,8 @@
     "category": "Categoría",
     "i_understand": "Te entiendo",
     "more": "Ver más",
-    "new_message": "Escribe tu mensaje"
+    "new_message": "Escribe tu mensaje",
+    "back": "Volver al Home"
   },
   "new_message": {
     "instructions": [
@@ -78,7 +79,9 @@
   },
   "errors": {
     "exists": "Este usuario ya existe",
-    "wrongInfo": "Usuario o contraseña incorrectos"
+    "wrongInfo": "Usuario o contraseña incorrectos",
+    "no_message": "Tu mensaje no puede estar vacío",
+    "not_found": "Parece que la página que buscas no existe"
   },
   "confirmation": {
     "confirm_delete": "¿Seguro que quieres borrar el mensaje?",

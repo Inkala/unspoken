@@ -202,21 +202,18 @@ button {
     .notification-item {
       border-bottom: 1px solid $light-gray-blue;
       flex-direction: column;
-      .small-wrapper{
-        width: 90%;
-        overflow: hidden;
-        p {
+      a {
+        color: $white;
+        width: 100%;
+        .small-wrapper {
           align-self: flex-start;
+          color: $light-gray-blue;
+          overflow: hidden;
           background: -webkit-linear-gradient(45deg, #99b1bd 75%, #5b859c 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           white-space: nowrap;
-          width: 100%;
         }
-      }
-      a {
-        color: $white;
-        width: 100%;
       }
     }
   }
@@ -615,6 +612,12 @@ footer {
       }
     }
   }
+  .modal-buttons {
+    button {
+      width: auto;
+      margin: 0 auto;
+    }
+  }
 }
 
 .messages-view {
@@ -706,7 +709,7 @@ footer {
     flex-direction: column;
     justify-content: space-evenly;
     h2 {
-      font-size: 1.35em;
+      font-size: 1.25em;
     }
     .modal-buttons {
       display: flex;
@@ -718,5 +721,46 @@ footer {
         width: 45%;
       }
     }
+  }
+}
+
+.error-page {
+  height: calc(100vh - 50px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  background-image: url(/img/forest.png);
+  text-align: center;
+  color: $gunmetal;
+  font-size: 1em;
+  padding: 80px 70px 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  font-weight: 700;
+  h2 {
+    font-family: 'EB Garamond', serif;
+    color: #9f9f9f;
+    font-size: 6em;
+    font-weight: 700;
+  }
+  .home-button {
+    color: $grayish-blue;
+    border: 2px solid $grayish-blue;
+    padding: 10px 15px;
+  }
+  .clouds {
+    position: absolute;
+    height: 25%;
+  }
+  .left-cloud {
+    left: 0;
+    top: 20px;
+  }
+  .right-cloud {
+    right: 0;
+    top: 105px;
   }
 }
