@@ -36,7 +36,6 @@ class Home extends Component {
   render() {
     const { messages } = this.state;
     const { tagline, more, new_message } = text.home;
-    console.log("Home:,", this.props)
     return (
       <section className="home-section">
         <Header />

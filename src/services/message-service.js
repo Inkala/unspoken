@@ -14,7 +14,6 @@ class MessageService {
 
   createMessage(newMessage) {
     return this.messages.post('/new', newMessage).then(res => {
-      console.log("From Service", res);
     });
   }
 

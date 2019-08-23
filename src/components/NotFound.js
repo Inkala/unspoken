@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import text from '../translations/texts_ES.json';
 
 const NotFound = () => {
-  console.log()
   return (
     <section className="error-page">
       <img className="clouds left-cloud" src={process.env.PUBLIC_URL + '/img/left-clouds.png'} alt="" />
