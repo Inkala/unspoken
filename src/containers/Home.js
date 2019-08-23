@@ -36,6 +36,7 @@ class Home extends Component {
   render() {
     const { messages } = this.state;
     const { tagline, more, new_message } = text.home;
+    console.log("Home:,", this.props)
     return (
       <section className="home-section">
         <Header />
@@ -57,7 +58,7 @@ class Home extends Component {
             {more}
             <ArrowDown />
           </button>
-          <Link to="/new-message" className="btn new-message-btn">
+          <Link to="/new-message" className={`btn new-message-btn${!this.props.isLoggedIn ? ' hidden' : ''}`}>
             <WriteMessageIcon />
             {new_message}
           </Link>

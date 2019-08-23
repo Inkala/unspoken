@@ -339,6 +339,8 @@ button {
     margin: 0 auto;
     padding: 10px 0;
     text-transform: uppercase !important;
+    max-width: 450px;
+    margin: 0 auto;
     svg {
       height: 10px;
       width: auto;
@@ -372,11 +374,17 @@ button {
 .messages-wrapper {
   margin-bottom: 25px;
   background-color: $light-gray;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .message-card {
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     font-size: 0.85em;
+    width: 100%;
     .message-content {
       display: flex;
       align-items: center;
@@ -384,7 +392,7 @@ button {
       background-color: $white;
       text-align: center;
       width: 100%;
-      min-height: 250px;
+      height: 250px;
       padding: 45px;
       font-family: 'EB Garamond', serif;
       font-size: 1.5em;
@@ -775,12 +783,70 @@ footer {
     top: 105px;
   }
 }
+
+/*--- Media Queries ---*/
+
 @media (min-width: 480px) {
-  .main-container {
+  .home-section {
+    .new-message-btn {
+      bottom: inherit;
+      top: 0;
+      right: 115px;
+      width: auto;
+      padding: 0 10px;
+      font-size: 1em;
+      height: 50px;
+      svg {
+        height: 22px;
+      }
+      &.hidden {
+        display: none;
+      }
+    }
+    .messages-section {
+      background-repeat: repeat-x;
+      background-size: 60%;
+    }
+    svg {
+      width: 70%;
+    }
+  }
+  footer {
+    padding-bottom: 15px;
+  }
+  .messages-wrapper {
+    justify-content: space-evenly;
+    font-size: 0.9em;
+    max-width: 925px;
+    .message-card {
+      width: 45%;
+      max-width: 385px;
+    }
+  }
+  .messages-view {
+    .messages-wrapper {
+      max-width: 100%;
+      .message-card {
+        width: 75%;
+      }
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .main-container {
+  .home-section {
+    .messages-section {
+      background-repeat: repeat-x;
+      background-size: 40%;
+    }
+    svg {
+      width: 60%;
+    }
   }
+  // .messages-wrapper {
+  //   font-size: 0.8em;
+  //   .message-card {
+  //     width: 30%;
+  //   }
+  // }
 }
