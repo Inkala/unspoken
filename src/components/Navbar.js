@@ -27,7 +27,10 @@ class Navbar extends Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.notificationsShowing !== this.state.notificationsShowing) {
+    if(
+      prevState.notificationsShowing !== this.state.notificationsShowing ||
+      prevProps.user._id !== this.props.user._id
+    ) {
       this.filterNotifications();
     }
   }

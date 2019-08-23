@@ -11,6 +11,7 @@ import { ReactComponent as Like } from '../svg/like.svg';
 import { ReactComponent as Comments } from '../svg/comments.svg';
 import { ReactComponent as More } from '../svg/more.svg';
 
+import authService from '../services/auth-service';
 import messageService from '../services/message-service';
 import reactionService from '../services/reaction-service';
 import text from '../translations/texts_ES.json';
@@ -30,18 +31,57 @@ class MessageCard extends Component {
 
   componentDidMount() {
     const { messageId } = this.props;
+    this.filterNotifications();
     messageService.getOneMessage(messageId).then(res => {
       this.setMessagesToState(res);
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.filterNotifications();
+    }
     const { id } = this.props.match.params;
     if (prevProps.match.params.id !== id) {
       messageService.getOneMessage(id).then(res => {
         this.setMessagesToState(res);
       });
     }
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if(prevState.notificationsShowing !== this.state.notificationsShowing) {
+  //     this.filterNotifications();
+  //   }
+  // }
+
+  filterNotifications = () => {
+    authService.myMessages().then(res => {
+      const notifications = [];
+      res.myMessages.map(message => {
+        const { likes, comments, reactions } = message;
+        const notification = {
+          id: message._id,
+          content: message.content
+        };
+        notification.likes = likes.filter(like => like.new);
+        notification.reactions = reactions.filter(reaction => reaction.new);
+        notification.comments = comments.filter(comment => comment.new);
+        if (
+          notification.likes.length ||
+          notification.reactions.length ||
+          notification.comments.length
+        ) {
+          notifications.unshift(notification);
+          
+        }
+        return message;
+      });
+      this.setState({
+        myMessages: res.myMessages,
+        notifications
+      });
+    });
   }
 
   setMessagesToState = res => {
